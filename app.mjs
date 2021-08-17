@@ -15,10 +15,21 @@ client.on('ready', () => {
 });
 
 client.on('interactionCreate', (inter) => {
-    if (!inter.isCommand()) return;
-
+    // Find the command by it's name
     const cmd = cmdIndex.find((e) => {return e.name === inter.commandName});
-    if (cmd) cmd.onRun(inter);
+
+    // If a command was found
+    if (cmd) {
+        // Check if a subcommand was given
+        const subCmd = inter.options.getSubcommand(false);
+        if (subCmd) {
+            // Find the subcommand by it's name
+            const subCmdCls = cmd.options.find((e) => {return e.name === subCmd});
+            if (subCmdCls) subCmdCls.onRun(inter);
+        } else {
+            cmd.onRun(inter);
+        }
+    }
 });
 
 // -- Slash Commands --
