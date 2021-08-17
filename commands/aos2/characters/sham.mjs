@@ -152,6 +152,101 @@ class ShamSPwB2 extends AoS2Move {
     static fullRec = "16";
 }
 
+class ShamHyperA extends AoS2Move {
+    static name = "Poly Sprite";
+    static notation = "HyperA";
+    static desc = "Sham sequentially summons 11 sprites in random locations around her, 4 frames between each. Each sprite is launched 10 frames after summon, curving inward or outward before homing in on the opponent. These sprites are slower than the ones fired out by dwA, but they do not loop away from the opponent if they get too close. They explode either on contact or 110 frames after being summoned (a little under 2 seconds).";
+
+    static mizuumi = "https://wiki.gbl.gg/w/Acceleration_of_Suguri_2/Sham#Hypers";
+    static image = "https://wiki.gbl.gg/images/9/94/Aos2_sham_nhyper1.png";
+
+    static type = "Direct";
+    static energy = "-";
+    static shots = "11";
+    static damage = "250x";
+    static meterGain = "-";
+    static grazeGain = "-";
+    static startup = "5";
+    static cancelRec = "41";
+    static fullRec = "77";
+}
+
+class ShamHyperB extends AoS2Move {
+    static name = "Bounding Cube";
+    static notation = "HyperB";
+    static desc = "Sham summons a circle of 20 cubes. They become active on frame 31. The cubes behave in the exact same way as the non-hyper counterparts; in addition, Blue cubes also block all of the opponent's beams and ballistics on contact. It takes a little over a second after they are active for the opponent to be able to dash between them.";
+
+    static mizuumi = "https://wiki.gbl.gg/w/Acceleration_of_Suguri_2/Sham#Hypers";
+    static image = "https://wiki.gbl.gg/images/6/66/Aos2_sham_bhyper.png";
+
+    static type = "Direct (Explosion)";
+    static energy = "-";
+    static shots = "20";
+    static damage = "250x";
+    static meterGain = "-";
+    static grazeGain = "-";
+    static startup = "11";
+    static cancelRec = "20";
+    static fullRec = "51";
+}
+
+class ShamHyperD extends AoS2Move {
+    static name = "Delta Sprite";
+    static notation = "HyperD";
+    static desc = "'Delta Field'. Sham summons 3 trios of sprites. One trio travels out behind her, while the other two travel out slightly in front of her sides. Each trio of sprites carries a paralysing field between them that will remove the opponent's ability to dash if they come into contact with it (even if they have a shield up). About 2 seconds after their initial summon, they will slowly travel in a straight line towards the opponent's current location; then, once they hit the arena's edge, they will disappear after about 1.6 seconds. Each sprite has 100HP; if it is destroyed, then the paralysing field it carried will disappear, and the other sprites that carried the field will fire out at the opponent in the exact same way as dwA.";
+
+    static mizuumi = "https://wiki.gbl.gg/w/Acceleration_of_Suguri_2/Sham#Hypers";
+    static image = "https://wiki.gbl.gg/images/e/ee/Aos2_sham_dhyper.png";
+
+    static type = "Direct (Released Sprites)";
+    static energy = "-";
+    static shots = "3x3";
+    static damage = "250x (Released Sprites)";
+    static meterGain = "-";
+    static grazeGain = "-";
+    static startup = "11";
+    static cancelRec = "25";
+    static fullRec = "41";
+}
+
+class ShamHyperS extends AoS2Move {
+    static name = "Dwarf Rush";
+    static notation = "HyperS";
+    static desc = "Sham sequentially summons 10 dwarves in random locations around her, 3 frames between each. Each dwarf lunges forward 20 frames after being summoned, travelling in a straight line until it reaches the end of the map; during this period, it has a hitbox surrounding it every 5 frames that knocks the opponent back slightly. Like the SPwB ones, these dwarves have 800HP.";
+
+    static mizuumi = "https://wiki.gbl.gg/w/Acceleration_of_Suguri_2/Sham#Hypers";
+    static image = "https://wiki.gbl.gg/images/e/e0/Aos2_sham_sphyper.png";
+
+    static type = "Direct";
+    static energy = "-";
+    static shots = "10";
+    static damage = "40x";
+    static meterGain = "-";
+    static grazeGain = "-";
+    static startup = "31";
+    static cancelRec = "20";
+    static fullRec = "51";
+}
+
+class ShamAccel extends AoS2Move {
+    static name = "Arachne Call";
+    static notation = "Accel";
+    static desc = "Sham summons Arachne behind her, an enormous robot that travels in a straight line towards the opponent's current location. As it moves, it pushes back opponents in contact with it, much like cubes do. It also creates random mini-explosions within a large area at its front; each mini-explosion has a hitbox 10 frames after it is spawned. Once Arachne reaches the edge of the map, it explodes in a large area, 5 frames between each hitbox. Much to the move's misfortune, opponents can dash between Arachne's body and wings (assuming they don't just dash around it outright); it is even possible for an opponent to clip straight through the body due to how it calculates their position when pushing them back. Worse yet, the opponent is able to use shields before Arachne explodes.";
+
+    static mizuumi = "https://wiki.gbl.gg/w/Acceleration_of_Suguri_2/Sham#Hypers";
+    static image = "https://wiki.gbl.gg/images/7/7f/Aos2_sham_accel1.png";
+
+    static type = "Direct";
+    static energy = "-";
+    static shots = "-";
+    static damage = "130 (Mini Explosions), 260x4 (Final Explosion)";
+    static meterGain = "-";
+    static grazeGain = "-";
+    static startup = "14 (Arachne Summon), 37 (First Mini-Explosion)";
+    static cancelRec = "30";
+    static fullRec = "91";
+}
+
 export class ShamCharacter extends AoS2Character {
     static name = "sham";
     static fname = "Sham";
@@ -184,6 +279,15 @@ Sham's difficulty, to be blunt, just stems from her being the worst character in
         ShamwB,
         ShamHwB,
         ShamSPwB,
-        ShamSPwB2
+        ShamSPwB2,
+
+        // Hypers
+        ShamHyperA,
+        ShamHyperB,
+        ShamHyperD,
+        ShamHyperS,
+
+        // Accel
+        ShamAccel
     ];
 }
